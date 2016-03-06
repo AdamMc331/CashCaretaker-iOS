@@ -39,6 +39,7 @@ class AccountTableViewController: UITableViewController {
         do {
             let results = try managedContext.executeFetchRequest(fetchRequest)
             accounts = results as! [NSManagedObject]
+            tableView.reloadData()
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
