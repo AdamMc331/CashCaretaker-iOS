@@ -7,13 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8893F4091C8BE770006DEB1F /* cashcaretaker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8893F4071C8BE770006DEB1F /* cashcaretaker.xcdatamodeld */; };
 		88D1E1F71BFE8FF20033381E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D1E1F61BFE8FF20033381E /* AppDelegate.swift */; };
-		88D1E1F91BFE8FF20033381E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D1E1F81BFE8FF20033381E /* ViewController.swift */; };
-		88D1E1FC1BFE8FF20033381E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88D1E1FA1BFE8FF20033381E /* Main.storyboard */; };
+		88D1E1F91BFE8FF20033381E /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D1E1F81BFE8FF20033381E /* AccountTableViewController.swift */; };
 		88D1E1FE1BFE8FF20033381E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88D1E1FD1BFE8FF20033381E /* Assets.xcassets */; };
 		88D1E2011BFE8FF20033381E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88D1E1FF1BFE8FF20033381E /* LaunchScreen.storyboard */; };
 		88D1E20C1BFE8FF20033381E /* Cash_CaretakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D1E20B1BFE8FF20033381E /* Cash_CaretakerTests.swift */; };
 		88D1E2171BFE8FF20033381E /* Cash_CaretakerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D1E2161BFE8FF20033381E /* Cash_CaretakerUITests.swift */; };
+		88D1E2251BFE92090033381E /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D1E2241BFE92090033381E /* AccountTableViewCell.swift */; };
+		88D1E2271BFE9A850033381E /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D1E2261BFE9A850033381E /* Account.swift */; };
+		88D1E2291BFEAC430033381E /* AddAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D1E2281BFEAC430033381E /* AddAccountViewController.swift */; };
+		88D1E22B1BFEB0560033381E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88D1E22A1BFEB0560033381E /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,10 +38,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8893F4081C8BE770006DEB1F /* cashcaretaker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cashcaretaker.xcdatamodel; sourceTree = "<group>"; };
 		88D1E1F31BFE8FF20033381E /* Cash Caretaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cash Caretaker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		88D1E1F61BFE8FF20033381E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		88D1E1F81BFE8FF20033381E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		88D1E1FB1BFE8FF20033381E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		88D1E1F81BFE8FF20033381E /* AccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewController.swift; sourceTree = "<group>"; };
 		88D1E1FD1BFE8FF20033381E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		88D1E2001BFE8FF20033381E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		88D1E2021BFE8FF20033381E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +51,10 @@
 		88D1E2121BFE8FF20033381E /* Cash CaretakerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Cash CaretakerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		88D1E2161BFE8FF20033381E /* Cash_CaretakerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cash_CaretakerUITests.swift; sourceTree = "<group>"; };
 		88D1E2181BFE8FF20033381E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88D1E2241BFE92090033381E /* AccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
+		88D1E2261BFE9A850033381E /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		88D1E2281BFEAC430033381E /* AddAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAccountViewController.swift; sourceTree = "<group>"; };
+		88D1E22A1BFEB0560033381E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +105,16 @@
 		88D1E1F51BFE8FF20033381E /* Cash Caretaker */ = {
 			isa = PBXGroup;
 			children = (
+				88D1E22A1BFEB0560033381E /* Main.storyboard */,
 				88D1E1F61BFE8FF20033381E /* AppDelegate.swift */,
-				88D1E1F81BFE8FF20033381E /* ViewController.swift */,
-				88D1E1FA1BFE8FF20033381E /* Main.storyboard */,
+				88D1E1F81BFE8FF20033381E /* AccountTableViewController.swift */,
+				88D1E2261BFE9A850033381E /* Account.swift */,
+				88D1E2241BFE92090033381E /* AccountTableViewCell.swift */,
 				88D1E1FD1BFE8FF20033381E /* Assets.xcassets */,
 				88D1E1FF1BFE8FF20033381E /* LaunchScreen.storyboard */,
 				88D1E2021BFE8FF20033381E /* Info.plist */,
+				88D1E2281BFEAC430033381E /* AddAccountViewController.swift */,
+				8893F4071C8BE770006DEB1F /* cashcaretaker.xcdatamodeld */,
 			);
 			path = "Cash Caretaker";
 			sourceTree = "<group>";
@@ -229,9 +241,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88D1E22B1BFEB0560033381E /* Main.storyboard in Resources */,
 				88D1E2011BFE8FF20033381E /* LaunchScreen.storyboard in Resources */,
 				88D1E1FE1BFE8FF20033381E /* Assets.xcassets in Resources */,
-				88D1E1FC1BFE8FF20033381E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,7 +268,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88D1E1F91BFE8FF20033381E /* ViewController.swift in Sources */,
+				88D1E2251BFE92090033381E /* AccountTableViewCell.swift in Sources */,
+				88D1E2271BFE9A850033381E /* Account.swift in Sources */,
+				88D1E2291BFEAC430033381E /* AddAccountViewController.swift in Sources */,
+				8893F4091C8BE770006DEB1F /* cashcaretaker.xcdatamodeld in Sources */,
+				88D1E1F91BFE8FF20033381E /* AccountTableViewController.swift in Sources */,
 				88D1E1F71BFE8FF20033381E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,14 +309,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		88D1E1FA1BFE8FF20033381E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				88D1E1FB1BFE8FF20033381E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		88D1E1FF1BFE8FF20033381E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -482,6 +490,7 @@
 				88D1E21D1BFE8FF20033381E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		88D1E21E1BFE8FF20033381E /* Build configuration list for PBXNativeTarget "Cash CaretakerTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +499,7 @@
 				88D1E2201BFE8FF20033381E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		88D1E2211BFE8FF20033381E /* Build configuration list for PBXNativeTarget "Cash CaretakerUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,8 +508,22 @@
 				88D1E2231BFE8FF20033381E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8893F4071C8BE770006DEB1F /* cashcaretaker.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8893F4081C8BE770006DEB1F /* cashcaretaker.xcdatamodel */,
+			);
+			currentVersion = 8893F4081C8BE770006DEB1F /* cashcaretaker.xcdatamodel */;
+			path = cashcaretaker.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 88D1E1EB1BFE8FF20033381E /* Project object */;
 }

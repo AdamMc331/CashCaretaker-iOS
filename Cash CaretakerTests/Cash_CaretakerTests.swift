@@ -11,26 +11,14 @@ import XCTest
 
 class Cash_CaretakerTests: XCTestCase {
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
-        }
+    func testInitialization() {
+        // Success
+        let validAccount = Account(name: "Checking", balance: 250.45)
+        XCTAssertNotNil(validAccount, "Account is not valid.")
+        
+        // Bad name
+        let invalidAccount = Account(name: "", balance: 250.45)
+        XCTAssertNil(invalidAccount, "Account name is not empty.")
     }
     
 }
