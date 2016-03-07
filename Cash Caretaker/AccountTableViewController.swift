@@ -72,7 +72,62 @@ class AccountTableViewController: UITableViewController {
         cell.accountNameLabel.text = account.valueForKey("name") as? String
         cell.accountBalanceLabel.text = formatter.stringFromNumber((account.valueForKey("balance") as? Double)!)
         
+        print("test")
+        
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+
+    }
+    
+    // MARK: UITableViewDelegate
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        let deleteClosure = { (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in self.deleteItemAtIndex(indexPath)
+        }
+        
+        let deleteAction = UITableViewRowAction(style: .Default, title: "Delete", handler: deleteClosure)
+        
+        return [deleteAction]
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        // Intentionally blank. Required to use UITableViewRowActions
+    }
+    
+    // MARK: CoreData
+    func deleteItemAtIndex(indexPath: NSIndexPath) {
+        // Get delegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext
+        
+        // Remove item from CoreData
+        managedContext.deleteObject(accounts[indexPath.row])
+        accounts.removeAtIndex(indexPath.row)
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Could not save \(error), \(error.userInfo)")
+        }
+        
+        // Remove deleted item fromt able
+        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+    }
+    
+    // MARK: Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if(segue.identifier == "transactions") {
+            let destinationVC = segue.destinationViewController as! TransactionTableViewController
+            
+            if let selectedAccountCell = sender as? AccountTableViewCell {
+                let indexPath = tableView.indexPathForCell(selectedAccountCell)!
+                let selectedAccount = accounts[indexPath.row]
+                destinationVC.account = selectedAccount
+                
+            }
+        }
     }
 }
 

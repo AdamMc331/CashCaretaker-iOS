@@ -75,6 +75,7 @@
                                 <connections>
                                     <outlet property="accountBalanceLabel" destination="RcC-x6-jNn" id="QHF-jp-OEy"/>
                                     <outlet property="accountNameLabel" destination="qPO-gA-L6u" id="btQ-hx-pze"/>
+                                    <segue destination="ELy-a6-z2Z" kind="show" identifier="transactions" id="zeE-5e-MB4"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -101,6 +102,61 @@
             </objects>
             <point key="canvasLocation" x="1906" y="290"/>
         </scene>
+        <!--TransactionViewController-->
+        <scene sceneID="AFM-xs-FvM">
+            <objects>
+                <tableViewController title="TransactionViewController" id="ELy-a6-z2Z" customClass="TransactionTableViewController" customModule="Cash_Caretaker" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="lF8-nb-OXA">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="qeR-hY-arc">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qeR-hY-arc" id="nVs-TW-srQ">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ELy-a6-z2Z" id="Aoc-kY-VOY"/>
+                            <outlet property="delegate" destination="ELy-a6-z2Z" id="QhL-Dc-EDv"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Transactions" id="xtF-X6-inX">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="RP9-c6-dAg">
+                            <color key="tintColor" red="1" green="1" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="9jB-hK-scP" kind="show" id="3kA-Y1-Qux"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qGo-ml-5VF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1906" y="1153"/>
+        </scene>
+        <!--Add Transaction-->
+        <scene sceneID="lZw-l6-cNN">
+            <objects>
+                <viewController id="9jB-hK-scP" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PXQ-BG-90f"/>
+                        <viewControllerLayoutGuide type="bottom" id="YD3-Ga-jeh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="43S-UX-Zpc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Transaction" id="liy-6Q-t7B"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iqh-MF-AyQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2659" y="1153"/>
+        </scene>
         <!--AddAccountViewController-->
         <scene sceneID="6r2-5n-Kef">
             <objects>
@@ -119,15 +175,16 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m1J-Ln-wiM">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m1J-Ln-wiM">
                                 <rect key="frame" x="20" y="101" width="560" height="30"/>
+                                <color key="tintColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NtJ-Sa-Lse">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NtJ-Sa-Lse">
                                 <rect key="frame" x="20" y="197" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Starting Balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYV-HQ-6zY">
                                 <rect key="frame" x="20" y="168" width="155" height="21"/>
@@ -192,4 +249,5 @@
             <point key="canvasLocation" x="1094" y="290"/>
         </scene>
     </scenes>
+    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
