@@ -4,7 +4,13 @@
         <attribute name="balance" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Transaction" syncable="YES">
+        <attribute name="amount" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="transactionDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="account" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Account" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Account" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="Transaction" positionX="-63" positionY="0" width="128" height="90"/>
     </elements>
 </model>

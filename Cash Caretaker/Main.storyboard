@@ -106,18 +106,42 @@
         <scene sceneID="AFM-xs-FvM">
             <objects>
                 <tableViewController title="TransactionViewController" id="ELy-a6-z2Z" customClass="TransactionTableViewController" customModule="Cash_Caretaker" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="lF8-nb-OXA">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="lF8-nb-OXA">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="qeR-hY-arc">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TransactionTableViewCell" rowHeight="90" id="qeR-hY-arc" customClass="TransactionTableViewCell" customModule="Cash_Caretaker" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qeR-hY-arc" id="nVs-TW-srQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oug-Td-5mX">
+                                            <rect key="frame" x="8" y="8" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XLJ-u9-9V9">
+                                            <rect key="frame" x="550" y="8" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="oug-Td-5mX" firstAttribute="top" secondItem="nVs-TW-srQ" secondAttribute="topMargin" id="7mF-JS-QUc"/>
+                                        <constraint firstItem="oug-Td-5mX" firstAttribute="leading" secondItem="nVs-TW-srQ" secondAttribute="leadingMargin" id="Djc-aO-Od6"/>
+                                        <constraint firstItem="XLJ-u9-9V9" firstAttribute="top" secondItem="nVs-TW-srQ" secondAttribute="topMargin" id="wtt-4B-1CU"/>
+                                        <constraint firstItem="XLJ-u9-9V9" firstAttribute="trailing" secondItem="nVs-TW-srQ" secondAttribute="trailingMargin" id="xpZ-l2-nNh"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="transactionAmountLabel" destination="XLJ-u9-9V9" id="zsf-jb-RdD"/>
+                                    <outlet property="transactionDescriptionLabel" destination="oug-Td-5mX" id="deP-xB-N5d"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -129,7 +153,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="RP9-c6-dAg">
                             <color key="tintColor" red="1" green="1" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="9jB-hK-scP" kind="show" id="3kA-Y1-Qux"/>
+                                <segue destination="9jB-hK-scP" kind="show" identifier="addtransaction" id="3kA-Y1-Qux"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -138,10 +162,10 @@
             </objects>
             <point key="canvasLocation" x="1906" y="1153"/>
         </scene>
-        <!--Add Transaction-->
+        <!--AddTransactionViewController-->
         <scene sceneID="lZw-l6-cNN">
             <objects>
-                <viewController id="9jB-hK-scP" sceneMemberID="viewController">
+                <viewController title="AddTransactionViewController" id="9jB-hK-scP" customClass="AddTransactionViewController" customModule="Cash_Caretaker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PXQ-BG-90f"/>
                         <viewControllerLayoutGuide type="bottom" id="YD3-Ga-jeh"/>
@@ -149,9 +173,40 @@
                     <view key="view" contentMode="scaleToFill" id="43S-UX-Zpc">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zNE-YS-HgH">
+                                <rect key="frame" x="20" y="72" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aWV-MI-tXH">
+                                <rect key="frame" x="20" y="110" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="aWV-MI-tXH" firstAttribute="top" secondItem="zNE-YS-HgH" secondAttribute="bottom" constant="8" id="0Tu-Db-VmQ"/>
+                            <constraint firstItem="zNE-YS-HgH" firstAttribute="leading" secondItem="43S-UX-Zpc" secondAttribute="leadingMargin" id="A8N-ZI-1iM"/>
+                            <constraint firstItem="zNE-YS-HgH" firstAttribute="trailing" secondItem="43S-UX-Zpc" secondAttribute="trailingMargin" id="Gz5-LP-UEA"/>
+                            <constraint firstItem="zNE-YS-HgH" firstAttribute="top" secondItem="PXQ-BG-90f" secondAttribute="bottom" constant="8" id="KAE-C1-bvw"/>
+                            <constraint firstItem="aWV-MI-tXH" firstAttribute="trailing" secondItem="43S-UX-Zpc" secondAttribute="trailingMargin" id="LGw-JM-DrA"/>
+                            <constraint firstItem="aWV-MI-tXH" firstAttribute="leading" secondItem="43S-UX-Zpc" secondAttribute="leadingMargin" id="Zq9-sv-aWS"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Add Transaction" id="liy-6Q-t7B"/>
+                    <navigationItem key="navigationItem" title="Add Transaction" id="liy-6Q-t7B">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="Nh9-gY-Xqr">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="saveTransaction:" destination="9jB-hK-scP" id="Igs-rM-8he"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="amountTextField" destination="aWV-MI-tXH" id="BtW-Cm-8EB"/>
+                        <outlet property="descriptionTextField" destination="zNE-YS-HgH" id="MiF-P9-0mJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iqh-MF-AyQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -177,7 +232,7 @@
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m1J-Ln-wiM">
                                 <rect key="frame" x="20" y="101" width="560" height="30"/>
-                                <color key="tintColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <color key="tintColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>

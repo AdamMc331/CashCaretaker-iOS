@@ -13,16 +13,41 @@ class TransactionTableViewController: UITableViewController {
     
     var account: NSManagedObject?
 
+    // MARK: Properties
+    var transactions = [NSManagedObject]()
+    let formatter = NSNumberFormatter()
+    
+    // MARK: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = account?.valueForKey("name") as! String + " Transactions"
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        // Setup formatter
+        formatter.numberStyle = NSNumberFormatterStyle.CurrencyStyle
+        formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = 2
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Get delegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext
+        
+        // Fetch
+        let fetchRequest = NSFetchRequest(entityName: "Transaction")
+        print("Fetching for \(account)")
+        let predicate = NSPredicate(format: "account == %@", account!)
+        fetchRequest.predicate = predicate;
+        
+        do {
+            let results = try managedContext.executeFetchRequest(fetchRequest)
+            transactions = results as! [NSManagedObject]
+            tableView.reloadData()
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,24 +58,28 @@ class TransactionTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return transactions.count
     }
 
-    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("TransactionTableViewCell", forIndexPath: indexPath) as! TransactionTableViewCell
 
         // Configure the cell...
+        let transaction = transactions[indexPath.row]
+        
+        //TODO:
+        print(transaction.valueForKey("amount"))
+        print(transaction.valueForKey("account"))
+        
+        cell.transactionDescriptionLabel.text = transaction.valueForKey("transactionDescription") as? String
+        cell.transactionAmountLabel.text = formatter.stringFromNumber((transaction.valueForKey("amount") as? Double)!)
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -87,14 +116,15 @@ class TransactionTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if(segue.identifier == "addtransaction") {
+            let destinationVC = segue.destinationViewController as! AddTransactionViewController
+            destinationVC.account = account        }
     }
-    */
 
 }

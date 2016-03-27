@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		881173631C9A1F5300511AB5 /* AddTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881173621C9A1F5300511AB5 /* AddTransactionViewController.swift */; };
 		8893F4091C8BE770006DEB1F /* cashcaretaker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8893F4071C8BE770006DEB1F /* cashcaretaker.xcdatamodeld */; };
 		8893F40D1C8D0878006DEB1F /* TransactionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8893F40C1C8D0878006DEB1F /* TransactionTableViewController.swift */; };
+		88CA693E1C96090200CF49E6 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CA693D1C96090200CF49E6 /* TransactionTableViewCell.swift */; };
 		88D1E1F71BFE8FF20033381E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D1E1F61BFE8FF20033381E /* AppDelegate.swift */; };
 		88D1E1F91BFE8FF20033381E /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D1E1F81BFE8FF20033381E /* AccountTableViewController.swift */; };
 		88D1E1FE1BFE8FF20033381E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88D1E1FD1BFE8FF20033381E /* Assets.xcassets */; };
@@ -39,8 +41,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		881173621C9A1F5300511AB5 /* AddTransactionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTransactionViewController.swift; sourceTree = "<group>"; };
 		8893F4081C8BE770006DEB1F /* cashcaretaker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cashcaretaker.xcdatamodel; sourceTree = "<group>"; };
 		8893F40C1C8D0878006DEB1F /* TransactionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionTableViewController.swift; sourceTree = "<group>"; };
+		88CA693D1C96090200CF49E6 /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
 		88D1E1F31BFE8FF20033381E /* Cash Caretaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cash Caretaker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		88D1E1F61BFE8FF20033381E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88D1E1F81BFE8FF20033381E /* AccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +122,8 @@
 				88D1E2281BFEAC430033381E /* AddAccountViewController.swift */,
 				8893F4071C8BE770006DEB1F /* cashcaretaker.xcdatamodeld */,
 				8893F40C1C8D0878006DEB1F /* TransactionTableViewController.swift */,
+				88CA693D1C96090200CF49E6 /* TransactionTableViewCell.swift */,
+				881173621C9A1F5300511AB5 /* AddTransactionViewController.swift */,
 			);
 			path = "Cash Caretaker";
 			sourceTree = "<group>";
@@ -273,9 +279,11 @@
 			files = (
 				88D1E2251BFE92090033381E /* AccountTableViewCell.swift in Sources */,
 				88D1E2271BFE9A850033381E /* Account.swift in Sources */,
+				88CA693E1C96090200CF49E6 /* TransactionTableViewCell.swift in Sources */,
 				8893F40D1C8D0878006DEB1F /* TransactionTableViewController.swift in Sources */,
 				88D1E2291BFEAC430033381E /* AddAccountViewController.swift in Sources */,
 				8893F4091C8BE770006DEB1F /* cashcaretaker.xcdatamodeld in Sources */,
+				881173631C9A1F5300511AB5 /* AddTransactionViewController.swift in Sources */,
 				88D1E1F91BFE8FF20033381E /* AccountTableViewController.swift in Sources */,
 				88D1E1F71BFE8FF20033381E /* AppDelegate.swift in Sources */,
 			);
