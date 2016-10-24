@@ -7,20 +7,10 @@
 //
 
 import Foundation
+import RealmSwift
 
-public class Account {
+class Account: Object {
     // MARK: Properties
-    var name: String
-    var balance: NSDecimalNumber
-    
-    // MARK: Constructors
-    public init?(name: String, balance: NSDecimalNumber) {
-        self.name = name
-        self.balance = balance
-        
-        // Initialization should fail if there is no name.
-        if(name.isEmpty) {
-            return nil
-        }
-    }
+    dynamic var name = ""
+    dynamic var balance = 0.00
 }

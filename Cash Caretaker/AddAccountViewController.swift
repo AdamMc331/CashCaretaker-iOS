@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import RealmSwift
 
 class AddAccountViewController: UIViewController {
 
@@ -16,15 +17,15 @@ class AddAccountViewController: UIViewController {
     @IBOutlet var startingBalance: UITextField!
     
     // MARK: Properties
-    let formatter = NSNumberFormatter()
+    let formatter = NumberFormatter()
     
     // MARK: Actions
-    @IBAction func saveAccount(sender: AnyObject) {
+    @IBAction func saveAccount(_ sender: AnyObject) {
         //TODO:
         if(accountName.text != "" && startingBalance.text != "") {
-            let balance = formatter.numberFromString(startingBalance.text!) as? NSDecimalNumber ?? 0
-            saveAccount(accountName.text!, balance: balance)
-            navigationController?.popViewControllerAnimated(true)
+            let balance = formatter.number(from: startingBalance.text!) as? NSDecimalNumber ?? 0
+            saveAccount(name: accountName.text!, balance: balance)
+            _ = navigationController?.popViewController(animated: true)
         }
     }
     
@@ -41,23 +42,16 @@ class AddAccountViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: Core Data
+    // MARK: Realm
     func saveAccount(name: String, balance: NSDecimalNumber) {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let newAccount = Account()
+        newAccount.name = name
+        newAccount.balance = Double(balance)
         
-        let managedContext = appDelegate.managedObjectContext
+        let realm = try! Realm()
         
-        let entity = NSEntityDescription.entityForName("Account", inManagedObjectContext: managedContext)
-        
-        let account = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
-        
-        account.setValue(name, forKey: "name")
-        account.setValue(balance, forKey: "balance")
-        
-        do {
-            try managedContext.save()
-        } catch let error as NSError {
-            print("Could not save \(error), \(error.userInfo)")
+        try! realm.write {
+            realm.add(newAccount)
         }
     }
     

@@ -11,43 +11,24 @@ import CoreData
 
 class TransactionTableViewController: UITableViewController {
     
-    var account: NSManagedObject?
+    var account: Account?
 
     // MARK: Properties
     var transactions = [NSManagedObject]()
-    let formatter = NSNumberFormatter()
+    let formatter = NumberFormatter()
     
     // MARK: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Setup formatter
-        formatter.numberStyle = NSNumberFormatterStyle.CurrencyStyle
+        formatter.numberStyle = NumberFormatter.Style.currency
         formatter.minimumFractionDigits = 2
         formatter.maximumFractionDigits = 2
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        // Get delegate
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        let managedContext = appDelegate.managedObjectContext
-        
-        // Fetch
-        let fetchRequest = NSFetchRequest(entityName: "Transaction")
-        print("Fetching for \(account)")
-        let predicate = NSPredicate(format: "account == %@", account!)
-        fetchRequest.predicate = predicate;
-        
-        do {
-            let results = try managedContext.executeFetchRequest(fetchRequest)
-            transactions = results as! [NSManagedObject]
-            tableView.reloadData()
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,26 +38,26 @@ class TransactionTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return transactions.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TransactionTableViewCell", forIndexPath: indexPath) as! TransactionTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionTableViewCell", for: indexPath) as! TransactionTableViewCell
 
         // Configure the cell...
-        let transaction = transactions[indexPath.row]
+        let transaction = transactions[(indexPath as NSIndexPath).row]
         
         //TODO:
-        print(transaction.valueForKey("amount"))
-        print(transaction.valueForKey("account"))
+        print(transaction.value(forKey: "amount"))
+        print(transaction.value(forKey: "account"))
         
-        cell.transactionDescriptionLabel.text = transaction.valueForKey("transactionDescription") as? String
-        cell.transactionAmountLabel.text = formatter.stringFromNumber((transaction.valueForKey("amount") as? Double)!)
+        cell.transactionDescriptionLabel.text = transaction.value(forKey: "transactionDescription") as? String
+        cell.transactionAmountLabel.text = "$100"
 
         return cell
     }
@@ -119,12 +100,13 @@ class TransactionTableViewController: UITableViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if(segue.identifier == "addtransaction") {
-            let destinationVC = segue.destinationViewController as! AddTransactionViewController
-            destinationVC.account = account        }
+            let destinationVC = segue.destination as! AddTransactionViewController
+            destinationVC.account = account!
+        }
     }
 
 }

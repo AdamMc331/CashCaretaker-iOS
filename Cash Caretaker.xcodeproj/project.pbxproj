@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4ADE22DA1DBECC3600D452E9 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ADE22D81DBECC3600D452E9 /* Realm.framework */; };
+		4ADE22DB1DBECC3600D452E9 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4ADE22D81DBECC3600D452E9 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4ADE22DC1DBECC3600D452E9 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ADE22D91DBECC3600D452E9 /* RealmSwift.framework */; };
+		4ADE22DD1DBECC3600D452E9 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4ADE22D91DBECC3600D452E9 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		881173631C9A1F5300511AB5 /* AddTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881173621C9A1F5300511AB5 /* AddTransactionViewController.swift */; };
 		8893F4091C8BE770006DEB1F /* cashcaretaker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8893F4071C8BE770006DEB1F /* cashcaretaker.xcdatamodeld */; };
 		8893F40D1C8D0878006DEB1F /* TransactionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8893F40C1C8D0878006DEB1F /* TransactionTableViewController.swift */; };
@@ -40,7 +44,24 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		4ADE22DE1DBECC3600D452E9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4ADE22DD1DBECC3600D452E9 /* RealmSwift.framework in Embed Frameworks */,
+				4ADE22DB1DBECC3600D452E9 /* Realm.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		4ADE22D81DBECC3600D452E9 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		4ADE22D91DBECC3600D452E9 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		881173621C9A1F5300511AB5 /* AddTransactionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTransactionViewController.swift; sourceTree = "<group>"; };
 		8893F4081C8BE770006DEB1F /* cashcaretaker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cashcaretaker.xcdatamodel; sourceTree = "<group>"; };
 		8893F40C1C8D0878006DEB1F /* TransactionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionTableViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +89,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4ADE22DC1DBECC3600D452E9 /* RealmSwift.framework in Frameworks */,
+				4ADE22DA1DBECC3600D452E9 /* Realm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +114,8 @@
 		88D1E1EA1BFE8FF20033381E = {
 			isa = PBXGroup;
 			children = (
+				4ADE22D81DBECC3600D452E9 /* Realm.framework */,
+				4ADE22D91DBECC3600D452E9 /* RealmSwift.framework */,
 				88D1E1F51BFE8FF20033381E /* Cash Caretaker */,
 				88D1E20A1BFE8FF20033381E /* Cash CaretakerTests */,
 				88D1E2151BFE8FF20033381E /* Cash CaretakerUITests */,
@@ -156,6 +181,8 @@
 				88D1E1EF1BFE8FF20033381E /* Sources */,
 				88D1E1F01BFE8FF20033381E /* Frameworks */,
 				88D1E1F11BFE8FF20033381E /* Resources */,
+				4ADE22DE1DBECC3600D452E9 /* Embed Frameworks */,
+				4ADE22DF1DBECC8E00D452E9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -209,18 +236,21 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Adam McNeilly";
 				TargetAttributes = {
 					88D1E1F21BFE8FF20033381E = {
 						CreatedOnToolsVersion = 7.1.1;
+						LastSwiftMigration = 0800;
 					};
 					88D1E2061BFE8FF20033381E = {
 						CreatedOnToolsVersion = 7.1.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 88D1E1F21BFE8FF20033381E;
 					};
 					88D1E2111BFE8FF20033381E = {
 						CreatedOnToolsVersion = 7.1.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 88D1E1F21BFE8FF20033381E;
 					};
 				};
@@ -271,6 +301,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4ADE22DF1DBECC8E00D452E9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework/strip-frameworks.sh\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		88D1E1EF1BFE8FF20033381E /* Sources */ = {
@@ -345,8 +391,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -389,8 +437,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -409,6 +459,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -417,10 +468,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = (
+					"$(inherited)",
+					"$(RealmSwift.framework)",
+				);
 				INFOPLIST_FILE = "Cash Caretaker/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.androidessence.Cash-Caretaker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -428,10 +488,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Cash Caretaker/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.androidessence.Cash-Caretaker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -443,6 +508,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.androidessence.Cash-CaretakerTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cash Caretaker.app/Cash Caretaker";
 			};
 			name = Debug;
@@ -455,6 +521,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.androidessence.Cash-CaretakerTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cash Caretaker.app/Cash Caretaker";
 			};
 			name = Release;
@@ -466,6 +533,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.androidessence.Cash-CaretakerUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = "Cash Caretaker";
 				USES_XCTRUNNER = YES;
 			};
@@ -478,6 +546,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.androidessence.Cash-CaretakerUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = "Cash Caretaker";
 				USES_XCTRUNNER = YES;
 			};

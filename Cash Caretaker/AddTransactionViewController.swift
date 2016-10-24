@@ -15,16 +15,16 @@ class AddTransactionViewController: UIViewController {
     @IBOutlet var descriptionTextField: UITextField!
     
     // MARK: Properties
-    let formatter = NSNumberFormatter()
-    var account: NSManagedObject?
+    let formatter = NumberFormatter()
+    var account: Account?
     
-    @IBAction func saveTransaction(sender: AnyObject) {
+    @IBAction func saveTransaction(_ sender: AnyObject) {
         //TODO:
         if(descriptionTextField.text != "" && amountTextField.text != "") {
             print("Text is: " + amountTextField.text!)
-            let amount = formatter.numberFromString(amountTextField.text!) as? NSDecimalNumber ?? 0
+            let amount = formatter.number(from: amountTextField.text!) as? NSDecimalNumber ?? 0
             saveTransaction(descriptionTextField.text!, amount: amount)
-            navigationController?.popViewControllerAnimated(true)
+            _ = navigationController?.popViewController(animated: true)
         }
     }
     
@@ -41,16 +41,16 @@ class AddTransactionViewController: UIViewController {
     }
     
     // MARK: Core Data
-    func saveTransaction(description: String, amount: NSDecimalNumber) {
+    func saveTransaction(_ description: String, amount: NSDecimalNumber) {
         print("Adding transaction for \(description) with amount \(amount)")
         
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         let managedContext = appDelegate.managedObjectContext
         
-        let entity = NSEntityDescription.entityForName("Transaction", inManagedObjectContext: managedContext)
+        let entity = NSEntityDescription.entity(forEntityName: "Transaction", in: managedContext)
         
-        let transaction = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+        let transaction = NSManagedObject(entity: entity!, insertInto: managedContext)
         
         transaction.setValue(description, forKey: "transactionDescription")
         transaction.setValue(amount, forKey: "amount")

@@ -9,40 +9,31 @@
 import UIKit
 import CoreData
 
+import RealmSwift
+
 class AccountTableViewController: UITableViewController {
 
     // MARK: Properties
-    var accounts = [NSManagedObject]()
-    let formatter = NSNumberFormatter()
+    let realm = try! Realm()
+    lazy var accounts: Results<Account> = { self.realm.objects(Account.self) }()
+    
+    let formatter = NumberFormatter()
     
     // MARK: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Setup formatter
-        formatter.numberStyle = NSNumberFormatterStyle.CurrencyStyle
+        formatter.numberStyle = NumberFormatter.Style.currency
         formatter.minimumFractionDigits = 2
         formatter.maximumFractionDigits = 2
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Get delegate
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        let managedContext = appDelegate.managedObjectContext
-        
-        // Fetch
-        let fetchRequest = NSFetchRequest(entityName: "Account")
-        
-        do {
-            let results = try managedContext.executeFetchRequest(fetchRequest)
-            accounts = results as! [NSManagedObject]
-            tableView.reloadData()
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
+        // Query for accounts
+        accounts = realm.objects(Account.self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,79 +42,67 @@ class AccountTableViewController: UITableViewController {
     }
 
     // MARK: UITableViewController
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return accounts.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cellIdentifier = "AccountTableViewCell"
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! AccountTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! AccountTableViewCell
         
         // Fetch account
-        let account = accounts[indexPath.row]
+        let account = accounts[(indexPath as NSIndexPath).row]
         
         // Configure cell
-        cell.accountNameLabel.text = account.valueForKey("name") as? String
-        cell.accountBalanceLabel.text = formatter.stringFromNumber((account.valueForKey("balance") as? Double)!)
-        
-        print("test")
+        cell.accountNameLabel.text = account.name
+        cell.accountBalanceLabel.text = String(format:"%f", account.balance)
         
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
     }
     
     // MARK: UITableViewDelegate
-    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        let deleteClosure = { (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in self.deleteItemAtIndex(indexPath)
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteClosure = { (action: UITableViewRowAction!, indexPath: IndexPath!) -> Void in self.deleteItemAtIndex(indexPath)
         }
         
-        let deleteAction = UITableViewRowAction(style: .Default, title: "Delete", handler: deleteClosure)
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: deleteClosure)
         
         return [deleteAction]
     }
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
         // Intentionally blank. Required to use UITableViewRowActions
     }
     
     // MARK: CoreData
-    func deleteItemAtIndex(indexPath: NSIndexPath) {
-        // Get delegate
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        let managedContext = appDelegate.managedObjectContext
-        
-        // Remove item from CoreData
-        managedContext.deleteObject(accounts[indexPath.row])
-        accounts.removeAtIndex(indexPath.row)
-        do {
-            try managedContext.save()
-        } catch let error as NSError {
-            print("Could not save \(error), \(error.userInfo)")
+    func deleteItemAtIndex(_ indexPath: IndexPath) {
+        try! realm.write {
+            realm.delete(accounts[(indexPath as NSIndexPath).row])
         }
         
-        // Remove deleted item fromt able
-        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        // Remove deleted item from table
+        tableView.deleteRows(at: [indexPath], with: .fade)
     }
     
     // MARK: Navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
         if(segue.identifier == "transactions") {
-            let destinationVC = segue.destinationViewController as! TransactionTableViewController
+            let destinationVC = segue.destination as! TransactionTableViewController
             
             if let selectedAccountCell = sender as? AccountTableViewCell {
-                let indexPath = tableView.indexPathForCell(selectedAccountCell)!
-                let selectedAccount = accounts[indexPath.row]
+                let indexPath = tableView.indexPath(for: selectedAccountCell)!
+                let selectedAccount = accounts[(indexPath as NSIndexPath).row]
                 destinationVC.account = selectedAccount
                 
             }
