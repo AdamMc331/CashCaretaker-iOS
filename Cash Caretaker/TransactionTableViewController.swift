@@ -14,7 +14,6 @@ class TransactionTableViewController: UITableViewController {
     var account: Account?
 
     // MARK: Properties
-    var transactions = [NSManagedObject]()
     let formatter = NumberFormatter()
     
     // MARK: UIViewController
@@ -29,6 +28,8 @@ class TransactionTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,21 +44,18 @@ class TransactionTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return transactions.count
+        return (account?.transactions.count)!
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionTableViewCell", for: indexPath) as! TransactionTableViewCell
 
         // Configure the cell...
-        let transaction = transactions[(indexPath as NSIndexPath).row]
+        let transaction = account?.transactions[(indexPath as NSIndexPath).row]
         
-        //TODO:
-        print(transaction.value(forKey: "amount"))
-        print(transaction.value(forKey: "account"))
         
-        cell.transactionDescriptionLabel.text = transaction.value(forKey: "transactionDescription") as? String
-        cell.transactionAmountLabel.text = "$100"
+        cell.transactionDescriptionLabel.text = transaction?.trDescription
+        cell.transactionAmountLabel.text = String(format:"$%.2f", (transaction?.amount)!)
 
         return cell
     }

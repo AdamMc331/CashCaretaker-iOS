@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A762F2B1DBEED0D0014E643 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A762F2A1DBEED0D0014E643 /* Transaction.swift */; };
+		4A762F2D1DBEEDB30014E643 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A762F2C1DBEEDB30014E643 /* Category.swift */; };
 		4ADE22DA1DBECC3600D452E9 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ADE22D81DBECC3600D452E9 /* Realm.framework */; };
 		4ADE22DB1DBECC3600D452E9 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4ADE22D81DBECC3600D452E9 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4ADE22DC1DBECC3600D452E9 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ADE22D91DBECC3600D452E9 /* RealmSwift.framework */; };
@@ -60,6 +62,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4A762F2A1DBEED0D0014E643 /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		4A762F2C1DBEEDB30014E643 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		4ADE22D81DBECC3600D452E9 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		4ADE22D91DBECC3600D452E9 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		881173621C9A1F5300511AB5 /* AddTransactionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTransactionViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +153,8 @@
 				8893F40C1C8D0878006DEB1F /* TransactionTableViewController.swift */,
 				88CA693D1C96090200CF49E6 /* TransactionTableViewCell.swift */,
 				881173621C9A1F5300511AB5 /* AddTransactionViewController.swift */,
+				4A762F2A1DBEED0D0014E643 /* Transaction.swift */,
+				4A762F2C1DBEEDB30014E643 /* Category.swift */,
 			);
 			path = "Cash Caretaker";
 			sourceTree = "<group>";
@@ -327,11 +333,13 @@
 				88D1E2271BFE9A850033381E /* Account.swift in Sources */,
 				88CA693E1C96090200CF49E6 /* TransactionTableViewCell.swift in Sources */,
 				8893F40D1C8D0878006DEB1F /* TransactionTableViewController.swift in Sources */,
+				4A762F2B1DBEED0D0014E643 /* Transaction.swift in Sources */,
 				88D1E2291BFEAC430033381E /* AddAccountViewController.swift in Sources */,
 				8893F4091C8BE770006DEB1F /* cashcaretaker.xcdatamodeld in Sources */,
 				881173631C9A1F5300511AB5 /* AddTransactionViewController.swift in Sources */,
 				88D1E1F91BFE8FF20033381E /* AccountTableViewController.swift in Sources */,
 				88D1E1F71BFE8FF20033381E /* AppDelegate.swift in Sources */,
+				4A762F2D1DBEEDB30014E643 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

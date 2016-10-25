@@ -34,6 +34,7 @@ class AccountTableViewController: UITableViewController {
         
         // Query for accounts
         accounts = realm.objects(Account.self)
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,7 +62,7 @@ class AccountTableViewController: UITableViewController {
         
         // Configure cell
         cell.accountNameLabel.text = account.name
-        cell.accountBalanceLabel.text = String(format:"%f", account.balance)
+        cell.accountBalanceLabel.text = String(format:"$%.2f", account.balance)
         
         return cell
     }

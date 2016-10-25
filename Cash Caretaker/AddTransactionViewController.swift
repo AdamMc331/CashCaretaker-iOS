@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import RealmSwift
 
 class AddTransactionViewController: UIViewController {
 
@@ -42,26 +43,11 @@ class AddTransactionViewController: UIViewController {
     
     // MARK: Core Data
     func saveTransaction(_ description: String, amount: NSDecimalNumber) {
-        print("Adding transaction for \(description) with amount \(amount)")
+        let newTransaction = Transaction()
+        newTransaction.trDescription = description
+        newTransaction.amount = Double(amount)
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        
-        let managedContext = appDelegate.managedObjectContext
-        
-        let entity = NSEntityDescription.entity(forEntityName: "Transaction", in: managedContext)
-        
-        let transaction = NSManagedObject(entity: entity!, insertInto: managedContext)
-        
-        transaction.setValue(description, forKey: "transactionDescription")
-        transaction.setValue(amount, forKey: "amount")
-        print("Adding trans for: \(account)")
-        transaction.setValue(account, forKey: "account")
-        
-        do {
-            try managedContext.save()
-        } catch let error as NSError {
-            print("Could not save \(error), \(error.userInfo)")
-        }
+        account?.addTransaction(transaction: newTransaction)
     }
     
 
